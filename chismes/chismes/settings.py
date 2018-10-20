@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
     'rest_framework',
 
+    'corsheaders',
+
     'mischismes',
 ]
 
@@ -50,6 +52,8 @@ REST_FRAMEWORK = {
 }
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware', # added
+    'django.middleware.common.CommonMiddleware', # added
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -58,6 +62,10 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+CORS_ORIGIN_WHITELIST = (
+    'localhost:3000/' #React default local port  
+)
 
 ROOT_URLCONF = 'chismes.urls'
 
